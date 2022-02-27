@@ -1,0 +1,30 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#main-heading{
+    border-radius: 20px;
+}
+
+#submit-button{
+    font-weight: bold;
+    color: white;
+    background-color: #dc3545;
+}
+
+#submit-button:hover{
+    color: #dc3545;
+    background-color: white;
+}
+
+#memory-form .btn{
+    font-weight: bold;
+    color: white;
+    background-color: #dc3545;
+}
+
+#memory-form .btn:hover{
+    color: #dc3545;
+    background-color: white;
+
+}
