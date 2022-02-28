@@ -28,3 +28,20 @@ body{
     background-color: white;
 
 }
+.game-card{
+    width: 10vw;
+    height: 15vh;
+    border: 4px solid black;
+    border-radius: 8px;
+    background-size: 100%;
+    box-shadow: black 2px, 2px;
+}
+
+.game-card:hover{
+    opacity: 35%;
+    cursor: pointer;
+}
+
+#win-banner{
+    border-radius: 20px;
+}
