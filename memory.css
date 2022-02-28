@@ -26,8 +26,8 @@ body{
 #memory-form .btn:hover{
     color: #dc3545;
     background-color: white;
-
 }
+
 .game-card{
     width: 10vw;
     height: 15vh;
@@ -43,5 +43,20 @@ body{
 }
 
 #win-banner{
+    border-radius: 20px;
+}
+
+#win-banner .btn{
+    font-weight: bold;
+    color: white;
+    background-color: #dc3545;
+}
+
+#win-banner .btn:hover{
+    color: #dc3545;
+    background-color: white;
+}
+
+#thanks{
     border-radius: 20px;
 }

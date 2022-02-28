@@ -16,22 +16,39 @@ const DIFFICULTY = [
 
 let matchestoWin = 0;
 
+function addRadioClickListeners() {
+  console.log("addRadioClickListeners");
+
+  for (let button of document.querySelectorAll(".btn-check")) {
+    button.addEventListener("click", handleDiffClick);
+  }
+};
+
+let checkedDifficulty = ""
+
+function handleDiffClick(evt){
+  console.log("handleDiffClick")
+
+  let difficulty = evt.target.value
+
+  if (checkedDifficulty){
+    document.getElementById(`label-${checkedDifficulty}`).style.background = "#dc3545";
+    document.getElementById(`label-${checkedDifficulty}`).style.color= "white";
+  }
+
+  document.getElementById(`label-${difficulty}`).style.background = "white";
+  document.getElementById(`label-${difficulty}`).style.color= "#dc3545";
+  checkedDifficulty = difficulty
+}
+
+
+
 function handleSubmit(evt) {
   console.log("handleSubmit");
   evt.preventDefault();
 
-  let ele = document.getElementsByTagName('input');
-  let difficulty = "";
-  for (let i = 0; i < ele.length; i++) {
-
-    if (ele[i].type = "radio") {
-      if (ele[i].checked) {
-        difficulty = ele[i].value;
-      }
-    }
-  }
-  setColors(difficulty);
-  setDifficulty(difficulty);
+  setColors(checkedDifficulty);
+  setDifficulty(checkedDifficulty);
 };
 
 function setDifficulty(num) {
@@ -92,21 +109,20 @@ function showGameBoard(row, card) {
   }
   document.getElementById("memory-form").innerHTML = "";
   gameBoard.innerHTML = html;
-  addClickListeners();
+  addCardClickListeners();
 };
 
-function addClickListeners() {
-  console.log("addClickListeners");
+function addCardClickListeners() {
+  console.log("addCardClickListeners");
 
   for (let card of document.querySelectorAll(".game-card")) {
     card.addEventListener("click", handleCardClick);
   }
 }
 //STORE PREVIOUS TARGET IN [COLOR,CELL]
-let currentMatch = [];
-
 let currentScore = 0;
 let matchCounter = 0;
+let currentMatch = [];
 
 function handleCardClick(evt) {
   console.log("handleCardClick");
@@ -118,7 +134,7 @@ function handleCardClick(evt) {
     currentMatch.push(evt.target.id);
     flipCard(color, evt.target.id);
 
-  } else if (currentMatch[0].includes(color)) {
+  } else if (currentMatch[0].includes(color) && evt.target.id !== currentMatch[1]) {
     flipCard(color, evt.target.id);
     currentMatch = [];
     matchCounter++;
@@ -166,6 +182,77 @@ function handleWin() {
   `;
 
   winBanner.innerHTML = html;
+
+  setTimeout(playAgain, 2000);
 };
 
+function playAgain(){
+  console.log("playAgain")
+
+let newGamePrompt = document.getElementById("win-banner");
+let html = "";
+
+html += `
+  <div class="row justify-content-center align-items-center text-danger">
+    <div class="col-lg justify-content-center align-items-center text-center mt-5">
+    <label for="play-again" class="form-label lead d-block mb-4 text-danger fw-bold">Would you like to play again?</label>
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+
+    <input type="radio" class="btn-check" value ="0" name="no" id="no" autocomplete="off">
+    <label id="label-0" class="btn btn-lg border border-dark mx-2" for="no">No thanks</label>
+
+    <input type="radio" class="btn-check" value ="1" name="yes" id="yes" autocomplete="off">
+    <label id="label-1"class="btn btn-lg border border-dark mx-2" for="yes" >Heck yes!</label></div>
+    </div>
+  </div>
+</div>
+`
+
+newGamePrompt.innerHTML = html
+
+addWinClickListeners()
+};
+
+function addWinClickListeners() {
+  console.log("addWinClickListeners");
+
+  for (let button of document.querySelectorAll(".btn-check")) {
+    button.addEventListener("click", newGameSubmit);
+  }
+};
+
+function newGameSubmit(evt) {
+  console.log("handleSubmit");
+  evt.preventDefault();
+
+  let id = evt.target.value
+
+  if (id){
+      location.reload();
+  }else{
+    thanksForPlaying();
+  }
+};
+
+function thanksForPlaying(){
+  console.log("thanksForPlaying")
+
+  let thanks = document.getElementById("game-board");
+  let html = "";
+
+  html += html += `
+  <div id ="thanks" class="container-lg bg-light border border-dark mt-4 mb-5 pb-5">
+      <div class="row justify-content-center align-items-center text-danger">
+        <div class="col-lg justify-content-center align-items-center text-center mt-5">
+          <h1 class="flex-nowrap fw-bold">Thanks for playing!</h1>
+        </div>
+      </div>
+    <div class="row justify-content-center align-items-center text-danger">
+    `
+  thanks.innerHTML = html
+};
+
+
 document.getElementById("memory-form").addEventListener("submit", handleSubmit);
+addRadioClickListeners();
+//document.getElementById("thanks").addEventListener("submit", newGameSubmit);
