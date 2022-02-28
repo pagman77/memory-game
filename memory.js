@@ -121,7 +121,7 @@ function handleCardClick(evt) {
   } else if (currentMatch[0].includes(color)) {
     flipCard(color, evt.target.id);
     currentMatch = [];
-    currentScore++;
+    matchCounter++;
 
   } else {
     flipCard(color, evt.target.id);
