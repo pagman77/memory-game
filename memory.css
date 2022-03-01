@@ -39,7 +39,7 @@ body{
 }
 
 .game-card{
-    width: 10vw;
+    width: 18vw;
     height: 15vh;
     border: 2px solid black;
     border-radius: 4px;
@@ -75,11 +75,14 @@ body{
 }
 
 
-@media (max-width: 576px) {
+@media (max-width: 767px) {
     #copy, #social{
         text-align: center;
         align-content: center;
         align-items: center;
+    }
+    #copy{
+        margin-bottom: 8px;
     }
 
  }
