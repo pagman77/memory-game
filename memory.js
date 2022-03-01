@@ -24,7 +24,7 @@ function addRadioClickListeners() {
   }
 };
 
-let checkedDifficulty = ""
+let checkedDifficulty = "2"
 
 function handleDiffClick(evt){
   console.log("handleDiffClick")
@@ -107,7 +107,7 @@ function showGameBoard(row, card) {
     }
     html += "</div>";
   }
-  document.getElementById("memory-form").innerHTML = "";
+  document.getElementById("form-section").innerHTML = "";
   gameBoard.innerHTML = html;
   addCardClickListeners();
 };
@@ -123,11 +123,13 @@ function addCardClickListeners() {
 let currentScore = 0;
 let matchCounter = 0;
 let currentMatch = [];
+let flippedColors = [];
 
 function handleCardClick(evt) {
   console.log("handleCardClick");
 
   let color = evt.target.classList[1];
+
 
   if (!currentMatch[0]) {
     currentMatch.push(color);
@@ -137,6 +139,7 @@ function handleCardClick(evt) {
   } else if (currentMatch[0].includes(color) && evt.target.id !== currentMatch[1]) {
     flipCard(color, evt.target.id);
     currentMatch = [];
+    flippedColors.push(color);
     matchCounter++;
 
   } else {
@@ -145,10 +148,17 @@ function handleCardClick(evt) {
     setTimeout(unFlipCard, 1000, currentMatch[0], currentMatch[1]);
     currentMatch = [];
   }
+
+  //Check to see if we clicked a card that's already turned over
+  if (flippedColors.includes(color)){
+    currentMatch = [];
+  }
+
   //Check for win!
   if (matchCounter === matchestoWin) {
     handleWin();
   }
+
 };
 
 function flipCard(color, cell) {
@@ -227,7 +237,7 @@ function newGameSubmit(evt) {
 
   let id = evt.target.value
 
-  if (id){
+  if (id === 1){
       location.reload();
   }else{
     thanksForPlaying();
@@ -255,4 +265,3 @@ function thanksForPlaying(){
 
 document.getElementById("memory-form").addEventListener("submit", handleSubmit);
 addRadioClickListeners();
-//document.getElementById("thanks").addEventListener("submit", newGameSubmit);

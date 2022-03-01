@@ -24,26 +24,26 @@
 
   <!-- FORM -->
   <section>
-    <div class="container-lg mt-5">
+    <div id ="form-section" class="container-lg mt-5 mb-5">
       <div class="row justify-content-center align-items-center">
         <form id="memory-form">
 
           <!--DIFFICULTY-->
           <div class="col text-center align-items-center justify-content-center">
-            <label for="difficulty" class="form-label lead d-block mb-4 text-danger fw-bold">Choose your difficulty:</label>
+            <label for="difficulty" class="form-label lead d-block mb-5 text-danger display-6 fw-bold">Choose your difficulty:</label>
               <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
               <input type="radio" class="btn-check" value ="0" name="diff-0" id="diff-0" autocomplete="off">
-              <label id="label-0" class="btn btn-lg border border-dark mx-2" for="diff-0">NOVICE</label>
+              <label id="label-0" class="btn btn-lg btn-block border border-dark mx-2" for="diff-0">NOVICE</label>
 
               <input type="radio" class="btn-check" value ="1" name="diff-1" id="diff-1" autocomplete="off">
-              <label id="label-1"class="btn btn-lg border border-dark mx-2" for="diff-1" >EASY</label>
+              <label id="label-1"class="btn btn-lg border border-dark mx-2" for="diff-1">EASY</label>
 
               <input type="radio" class="btn-check" value ="2"name="diff-2" id="diff-2" autocomplete="off">
-              <label id="label-2"class="btn btn-lg border-dark mx-2" for="diff-2">MEDIUM</label>
+              <label id="label-2"class="btn btn-lg border-dark mx-2" for="diff-2" style="background: white; color: rgb(220, 53, 69);">MEDIUM</label>
 
               <input type="radio" class="btn-check" value ="3" name="diff-3" id="diff-3" autocomplete="off">
-              <label id="label-3"class="btn btn-lg border-dark mx-2" for="diff-3">HARD</label>
+              <label id="label-3"class="btn btn-lg kborder-dark mx-2" for="diff-3">HARD</label>
 
               <input type="radio" class="btn-check" value="4" name="diff-4" id="diff-4" autocomplete="off">
               <label id="label-4"class="btn btn-lg border-dark mx-2" for="diff-4">MADNESS</label>
@@ -56,7 +56,6 @@
           </div>
 
           </form>
-          <hr>
         </div> <!-- ROW-->
     </div> <!-- CONTAINER-->
   </section>
@@ -64,7 +63,7 @@
 <!--GAME BOARD-->
 
 <section>
-  <div id="game-board" class="container-lg m-5 p-5">
+  <div id="game-board" class="container-lg">
         <!--APPEND TO DOM TO CREATE GAME BOARD BASED ON DIFFICULTY-->
   </div>
 </section>
@@ -96,4 +95,3 @@
     crossorigin="anonymous"></script>
 </body>
 </html>
-

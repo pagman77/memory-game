@@ -16,16 +16,26 @@ body{
     color: #dc3545;
     background-color: white;
 }
+#memory-form{
+    margin-top : 7.5vh;
+    margin-bottom: 7.5vh;
+}
 
 #memory-form .btn{
     font-weight: bold;
     color: white;
     background-color: #dc3545;
+
 }
 
 #memory-form .btn:hover{
     color: #dc3545;
     background-color: white;
+}
+
+#game-board{
+    margin-top: 15vh;
+    margin-bottom: 15vh;
 }
 
 .game-card{
@@ -34,7 +44,7 @@ body{
     border: 4px solid black;
     border-radius: 8px;
     background-size: 100%;
-    box-shadow: black 2px, 2px;
+    box-shadow: 5px, 10px, 5px, #dc3545;
 }
 
 .game-card:hover{
