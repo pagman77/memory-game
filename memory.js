@@ -232,12 +232,12 @@ function addWinClickListeners() {
 };
 
 function newGameSubmit(evt) {
-  console.log("handleSubmit");
+  console.log("newGameSubmit");
   evt.preventDefault();
 
   let id = evt.target.value
 
-  if (id === 1){
+  if (id === "1"){
       location.reload();
   }else{
     thanksForPlaying();
