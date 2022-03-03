@@ -1,5 +1,6 @@
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 50px;
 }
 
 #main-heading{
@@ -44,12 +45,11 @@ body{
     border: 2px solid black;
     border-radius: 4px;
     background-size: 100%;
-    box-shadow: 5px, 10px, 5px, #dc3545;
 }
 
 .game-card:hover{
-    background: rgb(235, 226, 226);
     cursor: pointer;
+    border: 3px dashed #dc3545;
 }
 
 #win-banner{
